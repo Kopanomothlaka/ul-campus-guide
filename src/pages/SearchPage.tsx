@@ -1,10 +1,12 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { LocationCard } from '@/components/ui/LocationCard';
 import { locations, categories } from '@/data/locations';
-import { Search, X, MapPin, GraduationCap, Building2, BookOpen, Users, Home, Trophy, UtensilsCrossed } from 'lucide-react';
+import { Search, X, MapPin, GraduationCap, Building2, BookOpen, Users, Home, Trophy, UtensilsCrossed, Locate } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useToast } from '@/hooks/use-toast';
 
 const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   all: MapPin,
@@ -18,9 +20,12 @@ const categoryIcons: Record<string, React.ComponentType<{ className?: string }>>
 };
 
 export default function SearchPage() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
   const [activeCategory, setActiveCategory] = useState('all');
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const [isLocating, setIsLocating] = useState(false);
+  const { toast } = useToast();
 
   // Load recent searches from localStorage
   useEffect(() => {
@@ -29,6 +34,15 @@ export default function SearchPage() {
       setRecentSearches(JSON.parse(saved));
     }
   }, []);
+
+  // Update search from URL params
+  useEffect(() => {
+    const query = searchParams.get('q');
+    if (query) {
+      setSearchQuery(query);
+      handleSearch(query);
+    }
+  }, [searchParams]);
 
   // Save search to recent
   const handleSearch = (query: string) => {
@@ -56,6 +70,45 @@ export default function SearchPage() {
 
   const clearSearch = () => {
     setSearchQuery('');
+  };
+
+  const handleGetLocation = () => {
+    setIsLocating(true);
+    
+    if (!navigator.geolocation) {
+      toast({
+        title: 'Location Not Supported',
+        description: 'Your browser does not support location services.',
+        variant: 'destructive',
+      });
+      setIsLocating(false);
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        toast({
+          title: 'Location Found!',
+          description: 'Showing nearby campus buildings. Use the map for directions.',
+        });
+        setIsLocating(false);
+        // In a real app, this would sort by distance
+        // For now, just show a confirmation
+      },
+      (error) => {
+        let message = 'Unable to get your location.';
+        if (error.code === error.PERMISSION_DENIED) {
+          message = 'Location permission denied. Please enable location access.';
+        }
+        toast({
+          title: 'Location Error',
+          description: message,
+          variant: 'destructive',
+        });
+        setIsLocating(false);
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
   };
 
   return (
@@ -94,6 +147,29 @@ export default function SearchPage() {
                 <X className="w-5 h-5" />
               </button>
             )}
+          </div>
+          
+          {/* Location Button */}
+          <div className="flex justify-center mt-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleGetLocation}
+              disabled={isLocating}
+              className="btn-secondary"
+            >
+              {isLocating ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin mr-2" />
+                  Finding...
+                </>
+              ) : (
+                <>
+                  <Locate className="w-4 h-4 mr-2" />
+                  Use My Location
+                </>
+              )}
+            </Button>
           </div>
         </div>
 

@@ -35,29 +35,44 @@ export default function Index() {
         </div>
         
         <div className="container mx-auto px-4 py-16 md:py-24 relative">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-golden-muted text-primary text-sm font-medium mb-6">
-              <Compass className="w-4 h-4" />
-              Official Campus Navigation
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="text-center lg:text-left animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-golden-muted text-primary text-sm font-medium mb-6">
+                <Compass className="w-4 h-4" />
+                Official Campus Navigation
+              </div>
+              
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+                UL Campus{' '}
+                <span className="text-gradient">Navigator</span>
+              </h1>
+              
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+                Find your way around University of Limpopo with ease. 
+                Explore buildings, discover facilities, and navigate campus like a pro.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4">
+                <Link to="/map">
+                  <Button className="btn-primary text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <Navigation className="w-5 h-5 mr-2" />
+                    Explore Campus Map
+                  </Button>
+                </Link>
+              </div>
             </div>
-            
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-              UL Campus{' '}
-              <span className="text-gradient">Navigator</span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              Find your way around University of Limpopo with ease. 
-              Explore buildings, discover facilities, and navigate campus like a pro.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/map">
-                <Button className="btn-primary text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-shadow">
-                  <Navigation className="w-5 h-5 mr-2" />
-                  Explore Campus Map
-                </Button>
-              </Link>
+
+            {/* Student Image */}
+            <div className="relative animate-fade-in" style={{ animationDelay: '200ms' }}>
+              <div className="relative w-full max-w-lg mx-auto">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl blur-2xl transform rotate-6"></div>
+                <img 
+                  src="/Gemini_Generated_Image_ozvhjyozvhjyozvh.png" 
+                  alt="Student navigating campus with map" 
+                  className="relative w-full h-auto rounded-2xl shadow-2xl object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Info, Loader2 } from 'lucide-react';
+import { Info, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function MapPage() {
@@ -14,9 +14,11 @@ export default function MapPage() {
           <div className="flex items-center justify-between h-[70px]">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-lg golden-gradient flex items-center justify-center">
-                <MapPin className="w-4 h-4 text-primary-foreground" />
-              </div>
+              <img 
+                src="/ul-logo.png" 
+                alt="University of Limpopo Logo" 
+                className="w-9 h-9 object-contain"
+              />
               <div className="hidden sm:block">
                 <h1 className="font-heading font-bold text-foreground leading-tight">
                   Interactive Campus Map

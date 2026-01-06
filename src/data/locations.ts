@@ -29,14 +29,6 @@ export const locations: Location[] = [
     floor: 'Ground - 3rd Floor',
   },
   {
-    id: 'sci-block-b',
-    name: 'Science Block B',
-    category: 'academic',
-    description: 'Biology and Environmental Science labs, research facilities.',
-    building: 'Science Complex',
-    floor: 'Ground - 2nd Floor',
-  },
-  {
     id: 'eng-building',
     name: 'Engineering Building',
     category: 'academic',
@@ -121,14 +113,6 @@ export const locations: Location[] = [
     description: 'Central library with study spaces, digital resources, and archives.',
     building: 'Library Complex',
     floor: 'Ground - 4th Floor',
-  },
-  {
-    id: 'law-library',
-    name: 'Law Library',
-    category: 'library',
-    description: 'Specialized legal resources and research materials.',
-    building: 'Law Complex',
-    floor: '2nd Floor',
   },
   {
     id: 'med-library',

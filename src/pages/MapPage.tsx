@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Search, Info, Loader2 } from 'lucide-react';
+import { MapPin, Info, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function MapPage() {
@@ -32,16 +32,6 @@ export default function MapPage() {
 
             {/* Actions */}
             <div className="flex items-center gap-2">
-              <Link to="/search">
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="text-foreground hover:text-primary hover:bg-golden-muted"
-                >
-                  <Search className="w-4 h-4 mr-2" />
-                  <span className="hidden sm:inline">Search</span>
-                </Button>
-              </Link>
               <Link to="/info">
                 <Button 
                   variant="ghost" 
@@ -93,7 +83,6 @@ export default function MapPage() {
           <ul className="text-xs text-muted-foreground space-y-1">
             <li>• Pinch to zoom on mobile devices</li>
             <li>• Click buildings for more information</li>
-            <li>• Use search to find specific locations</li>
           </ul>
         </div>
       </div>

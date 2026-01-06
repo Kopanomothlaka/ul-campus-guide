@@ -2,18 +2,13 @@ import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { FeatureCard } from '@/components/ui/FeatureCard';
 import { Button } from '@/components/ui/button';
-import { Map, Search, Info, MessageCircle, MapPin, Navigation, Compass } from 'lucide-react';
+import { Map, Info, MessageCircle, Navigation, Compass } from 'lucide-react';
 
 const features = [
   {
     icon: <Map className="w-7 h-7 text-primary" />,
     title: 'Interactive Map',
     description: 'Explore the campus with our detailed interactive map. Pan, zoom, and discover all locations.',
-  },
-  {
-    icon: <Search className="w-7 h-7 text-primary" />,
-    title: 'Building Search',
-    description: 'Quickly find any building, office, or facility on campus with powerful search.',
   },
   {
     icon: <Info className="w-7 h-7 text-primary" />,
@@ -27,13 +22,6 @@ const features = [
   },
 ];
 
-const popularLocations = [
-  'Main Library',
-  'Student Center',
-  'Admin Building',
-  'Science Block',
-  'Health Center',
-];
 
 export default function Index() {
   return (
@@ -70,37 +58,11 @@ export default function Index() {
                   Explore Campus Map
                 </Button>
               </Link>
-              <Link to="/search">
-                <Button variant="outline" className="btn-secondary text-lg px-8 py-6">
-                  <Search className="w-5 h-5 mr-2" />
-                  Find a Location
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Popular Locations */}
-      <section className="py-8 border-b border-border bg-card">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <span className="text-sm text-muted-foreground font-medium mr-2">
-              Popular:
-            </span>
-            {popularLocations.map((location) => (
-              <Link
-                key={location}
-                to="/search"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-golden-muted text-primary text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
-              >
-                <MapPin className="w-3 h-3" />
-                {location}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Features Grid */}
       <section className="py-16 md:py-24">

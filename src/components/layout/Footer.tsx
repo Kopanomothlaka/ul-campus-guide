@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Mail, Phone, ExternalLink } from 'lucide-react';
+import { Mail, Phone, ExternalLink } from 'lucide-react';
 
 const quickLinks = [
   { path: '/', label: 'Home' },
   { path: '/map', label: 'Interactive Map' },
-  { path: '/search', label: 'Find Locations' },
   { path: '/info', label: 'Campus Info' },
   { path: '/contact', label: 'Contact Us' },
 ];
@@ -17,9 +16,11 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg golden-gradient flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-primary-foreground" />
-              </div>
+              <img 
+                src="/ul-logo.png" 
+                alt="University of Limpopo Logo" 
+                className="w-10 h-10 object-contain"
+              />
               <div>
                 <h3 className="font-heading font-bold text-foreground">
                   UL Campus Navigator

@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { FeatureCard } from '@/components/ui/FeatureCard';
 import { Button } from '@/components/ui/button';
-import { Map, Search, Info, MessageCircle, MapPin, Navigation, Compass } from 'lucide-react';
+import { Map, Search, Info, MessageCircle, MapPin, Navigation, Compass, Locate, X } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const features = [
   {
@@ -36,6 +38,58 @@ const popularLocations = [
 ];
 
 export default function Index() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isLocating, setIsLocating] = useState(false);
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+  const handleGetLocation = () => {
+    setIsLocating(true);
+    
+    if (!navigator.geolocation) {
+      toast({
+        title: 'Location Not Supported',
+        description: 'Your browser does not support location services.',
+        variant: 'destructive',
+      });
+      setIsLocating(false);
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        toast({
+          title: 'Location Found!',
+          description: `Your location: ${latitude.toFixed(4)}, ${longitude.toFixed(4)}. Opening map...`,
+        });
+        setIsLocating(false);
+        // Navigate to map - the Mappedin map will handle the location
+        navigate('/map');
+      },
+      (error) => {
+        let message = 'Unable to get your location.';
+        if (error.code === error.PERMISSION_DENIED) {
+          message = 'Location permission denied. Please enable location access.';
+        }
+        toast({
+          title: 'Location Error',
+          description: message,
+          variant: 'destructive',
+        });
+        setIsLocating(false);
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -62,6 +116,60 @@ export default function Index() {
               Find your way around University of Limpopo with ease. 
               Explore buildings, discover facilities, and navigate campus like a pro.
             </p>
+
+            {/* Search Bar */}
+            <form onSubmit={handleSearch} className="max-w-lg mx-auto mb-6">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search buildings, offices, facilities..."
+                  className="search-input pl-12 pr-24 py-4 text-base shadow-lg"
+                  aria-label="Search locations"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-16 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Clear search"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                )}
+                <Button 
+                  type="submit" 
+                  size="sm" 
+                  className="absolute right-2 top-1/2 -translate-y-1/2 btn-primary"
+                >
+                  Search
+                </Button>
+              </div>
+            </form>
+
+            {/* Location Button */}
+            <div className="mb-8">
+              <Button
+                variant="outline"
+                onClick={handleGetLocation}
+                disabled={isLocating}
+                className="btn-secondary"
+              >
+                {isLocating ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin mr-2" />
+                    Getting Location...
+                  </>
+                ) : (
+                  <>
+                    <Locate className="w-4 h-4 mr-2" />
+                    Use My Location
+                  </>
+                )}
+              </Button>
+            </div>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/map">
@@ -72,8 +180,8 @@ export default function Index() {
               </Link>
               <Link to="/search">
                 <Button variant="outline" className="btn-secondary text-lg px-8 py-6">
-                  <Search className="w-5 h-5 mr-2" />
-                  Find a Location
+                  <MapPin className="w-5 h-5 mr-2" />
+                  Browse All Locations
                 </Button>
               </Link>
             </div>

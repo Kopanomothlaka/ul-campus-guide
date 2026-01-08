@@ -94,18 +94,33 @@ export function Footer() {
             <p className="text-sm text-muted-foreground text-center md:text-left">
               © {new Date().getFullYear()} University of Limpopo. All rights reserved.
             </p>
-            <p className="text-sm text-muted-foreground">
-              Developed by{' '}
-              <a 
-                href="https://kaytechcodecatalyst.co.za/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary font-medium hover:underline"
+            <div className="flex items-center gap-4">
+              <Link
+                to="/privacy-policy"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                KayTech Code Catalyst
-              </a>
-            </p>
+                Privacy Policy
+              </Link>
+              <span className="text-muted-foreground">|</span>
+              <Link
+                to="/terms-of-service"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
+          <p className="text-sm text-muted-foreground text-center mt-4">
+            Developed by{' '}
+            <a 
+              href="https://kaytechcodecatalyst.co.za/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary font-medium hover:underline"
+            >
+              KayTech Code Catalyst
+            </a>
+          </p>
         </div>
       </div>
     </footer>

@@ -17,14 +17,16 @@ import {
 const appInfo = {
   name: 'UL Campus Navigator',
   version: '1.0.0',
-  developer: 'University of Limpopo CS Department',
-  supportEmail: 'cs.support@ul.ac.za',
+  developer: 'KayTech Code Catalyst',
+  supportEmail: 'kaytechcodecatalyst@outlook.com',
+  phone: '079 629 9439',
+  website: 'https://kaytechcodecatalyst.co.za/',
 };
 
 const technicalContacts = [
-  { label: 'Map Issues', email: 'maps@ul.ac.za', icon: HelpCircle },
-  { label: 'Technical Problems', email: 'tech@ul.ac.za', icon: Code },
-  { label: 'Feature Requests', email: 'feedback@ul.ac.za', icon: Lightbulb },
+  { label: 'General Support', email: 'kaytechcodecatalyst@outlook.com', icon: HelpCircle },
+  { label: 'Technical Problems', email: 'kaytechcodecatalyst@outlook.com', icon: Code },
+  { label: 'Feature Requests', email: 'kaytechcodecatalyst@outlook.com', icon: Lightbulb },
 ];
 
 const universityContacts = [
@@ -195,15 +197,42 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center justify-between py-2 border-b border-border">
                   <span className="text-muted-foreground">Developer</span>
-                  <span className="font-medium text-foreground text-right text-sm">{appInfo.developer}</span>
+                  <a
+                    href={appInfo.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline font-medium text-right text-sm"
+                  >
+                    {appInfo.developer}
+                  </a>
                 </div>
-                <div className="flex items-center justify-between py-2">
-                  <span className="text-muted-foreground">Support</span>
+                <div className="flex items-center justify-between py-2 border-b border-border">
+                  <span className="text-muted-foreground">Email</span>
                   <a
                     href={`mailto:${appInfo.supportEmail}`}
-                    className="text-primary hover:underline font-medium"
+                    className="text-primary hover:underline font-medium text-sm"
                   >
                     {appInfo.supportEmail}
+                  </a>
+                </div>
+                <div className="flex items-center justify-between py-2 border-b border-border">
+                  <span className="text-muted-foreground">Phone</span>
+                  <a
+                    href={`tel:${appInfo.phone.replace(/\s/g, '')}`}
+                    className="text-primary hover:underline font-medium"
+                  >
+                    {appInfo.phone}
+                  </a>
+                </div>
+                <div className="flex items-center justify-between py-2">
+                  <span className="text-muted-foreground">Website</span>
+                  <a
+                    href={appInfo.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline font-medium text-sm"
+                  >
+                    kaytechcodecatalyst.co.za
                   </a>
                 </div>
               </div>

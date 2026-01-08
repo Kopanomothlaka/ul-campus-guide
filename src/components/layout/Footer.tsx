@@ -96,9 +96,14 @@ export function Footer() {
             </p>
             <p className="text-sm text-muted-foreground">
               Developed by{' '}
-              <span className="text-primary font-medium">
-                UL Computer Science Department
-              </span>
+              <a 
+                href="https://kaytechcodecatalyst.co.za/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary font-medium hover:underline"
+              >
+                KayTech Code Catalyst
+              </a>
             </p>
           </div>
         </div>

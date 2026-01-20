@@ -7,6 +7,10 @@ import Index from "./pages/Index";
 import MapPage from "./pages/MapPage";
 import InfoPage from "./pages/InfoPage";
 import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
+import FAQPage from "./pages/FAQPage";
+import GuidePage from "./pages/GuidePage";
+import SearchPage from "./pages/SearchPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
 import NotFound from "./pages/NotFound";
@@ -22,7 +26,11 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/map" element={<MapPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/info" element={<InfoPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/guide" element={<GuidePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />

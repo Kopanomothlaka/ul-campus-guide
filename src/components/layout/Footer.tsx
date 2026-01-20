@@ -4,7 +4,11 @@ import { Mail, Phone, ExternalLink } from 'lucide-react';
 const quickLinks = [
   { path: '/', label: 'Home' },
   { path: '/map', label: 'Interactive Map' },
+  { path: '/search', label: 'Search Locations' },
+  { path: '/guide', label: 'Navigation Guide' },
   { path: '/info', label: 'Campus Info' },
+  { path: '/about', label: 'About Us' },
+  { path: '/faq', label: 'FAQ' },
   { path: '/contact', label: 'Contact Us' },
 ];
 

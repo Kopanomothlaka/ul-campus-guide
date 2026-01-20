@@ -6,8 +6,11 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { path: '/', label: 'Home' },
-  { path: '/map', label: 'Interactive Map' },
+  { path: '/map', label: 'Map' },
+  { path: '/search', label: 'Search' },
+  { path: '/guide', label: 'Guide' },
   { path: '/info', label: 'Campus Info' },
+  { path: '/faq', label: 'FAQ' },
   { path: '/contact', label: 'Contact' },
 ];
 

@@ -19,6 +19,7 @@ import {
   AlertCircle,
   Lightbulb
 } from 'lucide-react';
+import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -183,6 +184,11 @@ const navigationTips = [
 export default function GuidePage() {
   return (
     <Layout>
+      <SEO 
+        title="Campus Navigation Guide"
+        description="Complete guide to navigating University of Limpopo campus. Learn about campus zones, location categories, transportation options, and helpful navigation tips."
+        canonicalUrl="https://ulmap.netlify.app/guide"
+      />
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">

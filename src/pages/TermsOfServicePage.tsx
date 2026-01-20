@@ -1,9 +1,15 @@
 import { Layout } from '@/components/layout/Layout';
 import { FileText, Scale, AlertTriangle, CheckCircle, XCircle, Mail } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 export default function TermsOfServicePage() {
   return (
     <Layout>
+      <SEO 
+        title="Terms of Service"
+        description="Terms of Service for UL Campus Navigator. Read our terms and conditions for using the University of Limpopo campus navigation web application."
+        canonicalUrl="https://ulmap.netlify.app/terms-of-service"
+      />
       <div className="container mx-auto px-4 py-8 md:py-12">
         <div className="max-w-4xl mx-auto">
           {/* Header */}

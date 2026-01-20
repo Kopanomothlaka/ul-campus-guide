@@ -1,5 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { MapPin, Clock, AlertTriangle, Phone, Info, Building2, Users, BookOpen } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const quickFacts = [
   { icon: Building2, label: 'Buildings', value: '50+' },
@@ -27,6 +28,11 @@ const emergencyContacts = [
 export default function InfoPage() {
   return (
     <Layout>
+      <SEO 
+        title="Campus Information"
+        description="Essential information about University of Limpopo campus including operating hours, emergency contacts, campus layout, and navigation tips for students and visitors."
+        canonicalUrl="https://ulmap.netlify.app/info"
+      />
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">

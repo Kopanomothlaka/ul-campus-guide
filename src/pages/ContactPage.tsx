@@ -13,6 +13,7 @@ import {
   Lightbulb,
   CheckCircle 
 } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const appInfo = {
   name: 'UL Campus Navigator',
@@ -67,6 +68,11 @@ export default function ContactPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Contact & Support"
+        description="Get in touch with the UL Campus Navigator team. Contact us for technical support, feature requests, or general inquiries about the University of Limpopo navigation app."
+        canonicalUrl="https://ulmap.netlify.app/contact"
+      />
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">

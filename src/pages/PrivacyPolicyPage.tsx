@@ -1,9 +1,15 @@
 import { Layout } from '@/components/layout/Layout';
 import { Shield, Eye, Database, Lock, Users, Mail } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 export default function PrivacyPolicyPage() {
   return (
     <Layout>
+      <SEO 
+        title="Privacy Policy"
+        description="Privacy Policy for UL Campus Navigator. Learn how we collect, use, and protect your information when using our University of Limpopo campus navigation service."
+        canonicalUrl="https://ulmap.netlify.app/privacy-policy"
+      />
       <div className="container mx-auto px-4 py-8 md:py-12">
         <div className="max-w-4xl mx-auto">
           {/* Header */}

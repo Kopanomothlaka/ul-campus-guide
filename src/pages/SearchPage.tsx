@@ -5,6 +5,7 @@ import { locations, categories } from '@/data/locations';
 import { Search, X, MapPin, GraduationCap, Building2, BookOpen, Users, Home, Trophy, UtensilsCrossed } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import SEO from '@/components/SEO';
 
 const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   all: MapPin,
@@ -60,6 +61,11 @@ export default function SearchPage() {
 
   return (
     <Layout>
+      <SEO 
+        title="Search Campus Locations"
+        description="Search and find buildings, offices, and facilities across the University of Limpopo campus. Filter by category including academic, administrative, library, and more."
+        canonicalUrl="https://ulmap.netlify.app/search"
+      />
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Header */}
         <div className="max-w-2xl mx-auto text-center mb-8">

@@ -3,6 +3,7 @@ import { Layout } from '@/components/layout/Layout';
 import { FeatureCard } from '@/components/ui/FeatureCard';
 import { Button } from '@/components/ui/button';
 import { Map, Info, MessageCircle, Navigation, Compass } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const features = [
   {
@@ -26,6 +27,11 @@ const features = [
 export default function Index() {
   return (
     <Layout>
+      <SEO 
+        title="Home"
+        description="UL Campus Navigator - Official campus navigation web app for University of Limpopo. Find buildings, facilities, and navigate Turfloop campus with ease."
+        canonicalUrl="https://ulmap.netlify.app/"
+      />
       {/* Hero Section */}
       <section className="relative bg-card overflow-hidden">
         {/* Background Pattern */}

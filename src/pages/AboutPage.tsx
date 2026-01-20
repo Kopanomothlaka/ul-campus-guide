@@ -13,6 +13,7 @@ import {
   Shield,
   Clock
 } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const milestones = [
   { year: '1959', event: 'University of the North established at Turfloop' },
@@ -99,6 +100,11 @@ const teamMembers = [
 export default function AboutPage() {
   return (
     <Layout>
+      <SEO 
+        title="About UL Campus Navigator"
+        description="Learn about UL Campus Navigator, the official navigation platform for University of Limpopo. Discover our mission, the university's history, academic faculties, and development team."
+        canonicalUrl="https://ulmap.netlify.app/about"
+      />
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">

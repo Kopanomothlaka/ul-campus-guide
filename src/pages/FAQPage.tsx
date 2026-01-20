@@ -11,6 +11,7 @@ import {
   Mail,
   ExternalLink
 } from 'lucide-react';
+import SEO from '@/components/SEO';
 import {
   Accordion,
   AccordionContent,
@@ -188,6 +189,11 @@ const faqCategories = [
 export default function FAQPage() {
   return (
     <Layout>
+      <SEO 
+        title="Frequently Asked Questions"
+        description="Find answers to common questions about UL Campus Navigator, campus navigation, technical support, privacy, and University of Limpopo facilities and services."
+        canonicalUrl="https://ulmap.netlify.app/faq"
+      />
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
